@@ -1,6 +1,9 @@
 import express, { Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
+import { configDotenv } from "dotenv";
+
+configDotenv();
 
 import { router } from './routes'
 
@@ -12,7 +15,7 @@ app.use(cors());
 app.use(router);
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  if(err instanceof Error){
+  if (err instanceof Error) {
     // Se for uma instancia do tipo error
     return res.status(400).json({
       error: err.message
@@ -24,5 +27,6 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     message: 'Internal server error.'
   })
 })
+const port = process.env.PORT ?? 3333;
 
-app.listen(3333, () => console.log('Server Online!'))
+app.listen(port, () => console.log(`Server Online na porta: ${port}!`))
