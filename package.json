@@ -5,10 +5,11 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --transpile-only src/server.ts",
-    "build": "tsc --build",
+    "build": "tsc",
     "start": "node dist/server.js",
-    "vercel-build": "prisma migrate dev",
-    "prisma:generate": "prisma generate"
+    "vercel-build": "npx prisma generate && npx prisma migrate deploy && tsc",
+    "prisma:generate": "npx prisma generate",
+    "prisma:migrate": "npx prisma migrate dev"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
