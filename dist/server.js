@@ -25,6 +25,7 @@ app.use(function (err, req, res, next) {
         status: 'error',
         message: 'Internal server error.'
 
+
     });
 });
 var port = (_a = process.env.PORT) !== null && _a !== void 0 ? _a : 3333;
